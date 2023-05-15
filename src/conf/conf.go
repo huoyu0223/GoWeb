@@ -2,6 +2,7 @@ package conf
 
 import (
 	"fmt"
+	"strconv"
 
 	"gopkg.in/ini.v1"
 )
@@ -18,6 +19,10 @@ type MySqlConfig struct {
 	PassWord string `ini:"password"`
 	DBName   string `ini:"dbname"`
 	ConPool  int    `ini:"conpool"`
+}
+
+func (mqc *MySqlConfig) GetMySqlConInfo() string {
+	return mqc.UserName + ":" + mqc.PassWord + "@tcp(" + mqc.Ip + ":" + strconv.Itoa(mqc.Port) + ")/" + mqc.DBName
 }
 
 type RedisConfig struct {
@@ -64,6 +69,7 @@ func ReadConf(confFile string) error {
 	if err != nil {
 		return fmt.Errorf("read log ini failed: %s", err.Error())
 	}
+	fmt.Println(MySqlCfg.GetMySqlConInfo())
 	fmt.Println(WebCfg)
 	fmt.Println(MySqlCfg)
 	fmt.Println(RedisCfg)

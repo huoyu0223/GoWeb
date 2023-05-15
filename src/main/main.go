@@ -55,7 +55,11 @@ func startServer() {
 func initRouterV1(r *gin.Engine) {
 	version := "v1/"
 	//user
-	r.POST(version+"AddUser", controllers.AddUser)
-	r.POST(version+"ModifyUser", controllers.ModifyUser)
-	r.POST(version+"DelUser", controllers.DelUser)
+	g1 := r.Group(version + "user/")
+	g1.GET("add", controllers.AddUser)
+	g1.GET("modify", controllers.ModifyUser)
+	g1.GET("del", controllers.DelUser)
+	g1.POST("add", controllers.AddUser)
+	g1.POST("modify", controllers.ModifyUser)
+	g1.POST("del", controllers.DelUser)
 }
