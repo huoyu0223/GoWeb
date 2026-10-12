@@ -1,7 +1,7 @@
-package logm
+package v1
 
 import (
-	"GoWeb/src/conf"
+	conf "GoWeb/src/v1/conf"
 	"os"
 
 	"github.com/natefinch/lumberjack"

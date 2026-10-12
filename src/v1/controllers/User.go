@@ -1,15 +1,16 @@
-package controllers
+package v1
 
 import (
 	"github.com/gin-gonic/gin"
 )
 
 func AddUser(c *gin.Context) {
-	if c.Request.Method == "GET" {
+	switch c.Request.Method {
+	case "GET":
 		c.String(200, "request get method:%s", c.Query("username"))
-	} else if c.Request.Method == "POST" {
+	case "POST":
 		c.String(200, "request get method")
-	} else {
+	default:
 		c.String(200, "request method error")
 	}
 }

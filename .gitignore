@@ -29,5 +29,8 @@
 *.exe
 *.out
 *.app
+.DS_Store
+go.sum
 
 build
+doc

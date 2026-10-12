@@ -15,7 +15,7 @@ var (
 )
 
 func NewRedisPool(ip string, port int, password string, db int, poolSize int) error {
-	addr := ip + strconv.Itoa(port)
+	addr := ip + ":" + strconv.Itoa(port)
 	client = redis.NewClient(&redis.Options{
 		Addr:     addr,
 		Password: password,

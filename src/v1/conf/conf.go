@@ -1,4 +1,4 @@
-package conf
+package v1
 
 import (
 	"fmt"
