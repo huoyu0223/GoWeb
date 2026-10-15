@@ -37,5 +37,5 @@ echo "start build app"
 go build -ldflags "-X $MODULE/src/version.VerionGit=$git_commit" -o "$BUILD_PATH" "$SRC_PATH"
 echo "build success"
 
-cp -r conf/ build/
+cp -r conf build/
 # mkdir build/logs

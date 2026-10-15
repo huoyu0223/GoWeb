@@ -14,9 +14,13 @@ var (
 
 func NewMysqlConn(username string, password string, ip string, port int16, DBName string, conPool int) error {
 	info := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8", username, password, ip, port, DBName)
-	fmt.Println("connect mysql info:", info)
 	dbs, err := sql.Open("mysql", info)
 	if err != nil {
+		return err
+	}
+	err = dbs.Ping()
+	if err != nil {
+		defer dbs.Close()
 		return err
 	}
 	if conPool < 10 {
